@@ -1,0 +1,196 @@
+
+/* 섹션 간 큼직한 간격 */
+.work-content section {
+    margin-bottom: 140px;
+}
+
+/* 이미지 기본 설정 */
+.work-content .detail-image img,
+.work-content .intro-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* = [1-1] 프로젝트 인트로 (Overview + PSR Grid) = */
+.work-content .project-intro .intro-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.work-content .project-intro .intro-text {
+    flex: 1;
+}
+
+.work-content .project-intro .intro-text h3 {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+.work-content .project-intro .intro-text p {
+    font-size: 15px;
+}
+
+.work-content .project-intro .intro-visual {
+    flex: 1.2;
+}
+
+/* PSR 3열 그리드 */
+.work-content .project-intro .intro-grid {
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid #eee;
+    padding: 40px 0 80px;
+}
+
+.work-content .project-intro .grid-column {
+    flex: 1;
+}
+
+.work-content .project-intro .grid-column h4 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.work-content .project-intro .grid-column p{
+    font-size: 15px;
+}
+
+
+.work-content .project-detail.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+
+.work-content .project-detail .detail-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* 세로로 쌓이게 */
+    justify-content: center; /* (선택) 이미지 높이에 맞춰 중앙 정렬하고 싶을 때 */
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* 좌우 반전용 클래스 */
+.work-content .project-detail.split-layout.reverse {
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.work-content .project-detail.split-layout.reverse .detail-content {
+    text-align: right;
+    align-items: flex-end;
+}
+.work-content .project-detail.split-layout.reverse .detail-content h3 {
+    justify-content: flex-end; 
+}ㄴ
+
+/* 숫자(span)와 제목(h3) 한 줄 배치 디자인 */
+.work-content .project-detail .detail-content h3 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    /* margin-bottom: 15px; */
+    display: flex;
+    align-items: baseline; /* 텍스트 하단 정렬 */
+}
+.work-content .project-detail .detail-content p{
+    font-size: 15px;
+    /* margin-bottom: 20px; */
+}
+
+.work-content .project-detail .detail-content .step-num {
+    font-size: 20px;
+    font-weight: 300;
+    margin-right: 12px;
+    color: #999;
+}
+
+/* 버튼 스타일 (PDF, Visit Site) */
+.work-content a[class^="btn-"] {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    border: 1px solid #2B2B2B;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.4s ease;
+}
+
+.work-content a[class^="btn-"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* 살짝 더 여유있게 밖으로 */
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0; /* 메인과 동일한 채워질 배경색 */
+    transition: left 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    z-index: -1;
+}
+
+.work-content a[class^="btn-"] .work-arrow {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+.work-content a[class^="btn-"]:hover .work-arrow {
+    animation: slide-right 1s infinite ease-in-out; 
+}
+@keyframes slide-right {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(8px);
+        opacity: 0.7; 
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 호버 시 배경 채우기 */
+.work-content a[class^="btn-"]:hover::before {
+    left: 0;
+}
+
+
+
+/* 숏폼 섹션 */
+.work-content .shortform-list .project-detail .btn-group {
+    display: flex;
+    gap: 12px; /* 버튼 사이 간격 */
+    /* margin-top: 30px; */
+}
+
+.work-content .shortform-list .project-detail .step-num {
+    display: block; /* 확실하게 한 줄 차지 */
+    font-size: 50px;
+    font-weight: 300; /* 얇게 해서 세련미 추가 */
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #2B2B2B;
+}
+.work-content .shortform-list .project-detail h3 {
+    font-size: 20px;
+    font-weight: 500;
+    /* margin-bottom: 15px; */
+    display: block; 
+}
+.work-content .shortform-list .project-detail p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 400px; 
+}

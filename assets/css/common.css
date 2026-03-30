@@ -1,0 +1,159 @@
+/* common 사이트 전체에서 반복되는 헤더와 중앙 정렬 컨테이너 설정 */
+
+:root {
+    --header-height: 80px; 
+}
+:root {
+    --primary-color: #0052FF; 
+}
+
+body {
+    padding-top: var(--header-height);
+    font-family: 'Pretendard', sans-serif;
+    color: #2B2B2B;
+    line-height: 1.6;
+}
+
+/* 중앙 정렬 바구니 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 40px; */
+}
+
+/* 헤더 설정 */
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed; /* 상단 고정 */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+.header .container {
+    height: 100%;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu li {
+    /* 메뉴 전체 너비 고정 (글자 수와 무관하게 간격 유지) */
+    min-width: 120px; 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.nav-menu li a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #2B2B2B;
+    font-weight: 400; /* 기본 두께 */
+    font-size: 16px;
+    transition: color 0.3s ease;
+    
+    /* 괄호가 움직일 수 있는 내부 여백 확보 */
+    padding: 0 12px; 
+}
+
+/* 괄호 공통 설정 */
+.nav-menu li a::before,
+.nav-menu li a::after {
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--primary-color, blue);
+    /* 베지어 곡선을 활용한 쫀득한 애니메이션 */
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 괄호 초기 위치 (약간 바깥에서 대기) */
+.nav-menu li a::before {
+    content: "(";
+    left: -5px; 
+    transform: translateY(-50%);
+}
+
+.nav-menu li a::after {
+    content: ")";
+    right: -5px; 
+    transform: translateY(-50%);
+}
+
+/* Active 상태: 이탤릭체로 변하면서 두께 조절 */
+.nav-menu li a.active {
+    font-style: italic;
+    font-weight: 300; /* 요구하신 대로 가늘게 조정 */
+}
+
+/* Hover & Active 시 괄호 등장 (글자 쪽으로 찰싹!) */
+.nav-menu li a:hover::before,
+.nav-menu li a.active::before {
+    opacity: 1;
+    /* 왼쪽에서 오른쪽으로 3px 이동하며 글자에 밀착 */
+    transform: translateY(-50%) translateX(3px); 
+}
+
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after {
+    opacity: 1;
+    /* 오른쪽에서 왼쪽으로 -3px 이동하며 글자에 밀착 */
+    transform: translateY(-50%) translateX(-3px);
+}
+
+
+
+
+/* 섹션 타이틀 공통 스타일 */
+.section-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 120px;
+    font-weight: 300;       /* Light */
+    line-height: 1.1;
+    letter-spacing: -0.06em; /* 자간 */
+    margin-bottom: 20px;
+    color: #2B2B2B; 
+}
+
+/* 마침표 */
+.section-title .point {
+    font-weight: 800;       /* ExtraBold */
+    color: var(--primary-color);
+    margin-left: 4px;
+}
+
+/* 📱 모바일 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 60px;    /* 모바일에서는 절반 정도*/
+        margin-bottom: 30px;
+    }
+}
+
+
+/* footer */
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+.footer-box{
+    margin: 30px 0;
+    text-align: center;
+}
